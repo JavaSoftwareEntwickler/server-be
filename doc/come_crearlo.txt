@@ -1,0 +1,39 @@
+npm init -y
+npm i typeorm ts-node express nodemon sqlite3
+npm i cors (forse in produzione non serve .. da verificare)
+npm i -D @types/cors @types/express
+
+crea il file
+  tsconfig.json:
+    {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS",
+            "rootDir": "./",
+            "moduleResolution": "node",
+            "esModuleInterop": true,
+            "strict": true
+        }
+    }
+modifica il file
+  package.json:
+
+    "scripts": {
+      "serve": "nodemon ./app.ts"
+    },
+
+crea il file
+  app.ts:
+    import express, { Request, Response } from 'express'
+    import cors from 'cors'
+
+    const app = express()
+    app.use(express.json())
+    app.use(cors())
+
+    app.listen(3000, () => {
+        console.log('App in ascolto nella porta 3000')
+    })
+
+RUNNARLO CON :
+npm run serve
