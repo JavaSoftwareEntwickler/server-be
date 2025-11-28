@@ -1,7 +1,10 @@
+import { Preventivo } from "./preventivo";
+
 export interface IRighePreventivo {
     id: number;
     descrizione: string;
     quantita: number;
+    preventivo: Preventivo;
     creatoIl: Date;
     modificatoIl: Date;
 }

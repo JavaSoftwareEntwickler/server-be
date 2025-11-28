@@ -1,6 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { IPreventivo } from "./IPreventivo";
-import { IRighePreventivo } from "./IRighePreventivo";
+import { RighePreventivo } from "./righe-preventivo";
 
 
 @Entity()
@@ -16,6 +16,9 @@ export class Preventivo implements IPreventivo {
 
     @Column()
     importoTotale: number;
+
+    @OneToMany(() => RighePreventivo, riga => riga.preventivo, { cascade: true })
+    righe: RighePreventivo[];
 
     @CreateDateColumn()
     creatoIl: Date;

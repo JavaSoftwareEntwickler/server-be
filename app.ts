@@ -1,12 +1,11 @@
-import express, { Request, Response } from 'express'
-import cors from 'cors'
-import { AppDataSource } from './db/data-source'
-import e from 'express'
-import { Preventivo } from './models/preventivo'
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import { AppDataSource } from './db/data-source';
+import { Preventivo } from './models/preventivo';
 
-const app = express()
-app.use(express.json())
-app.use(cors())
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 AppDataSource.initialize()
     .then(() => {
@@ -16,7 +15,7 @@ AppDataSource.initialize()
             const preventivoRepository = AppDataSource.getRepository(Preventivo);
 
             app.get('/preventivi', async (req: Request, res: Response) => {
-                const preventivi = await preventivoRepository.find();
+                const preventivi = await preventivoRepository.find({ relations: ["righe"] });
                 return res.json({
                     status: 'OK',
                     data: preventivi
@@ -35,7 +34,7 @@ AppDataSource.initialize()
         });
     })
     .catch((error) => {
-        console.log('Error in AppDataSource.initialize: ', error)
+        console.log('Error in AppDataSource.initialize: ', error);
     });
 
 

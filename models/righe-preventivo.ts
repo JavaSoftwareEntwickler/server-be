@@ -1,6 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { IPreventivo } from "./IPreventivo";
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { IRighePreventivo } from "./IRighePreventivo";
+import { Preventivo } from "./preventivo";
 
 
 @Entity()
@@ -13,6 +13,9 @@ export class RighePreventivo implements IRighePreventivo {
 
     @Column()
     quantita: number;
+
+    @ManyToOne(() => Preventivo, preventivo => preventivo.righe, { onDelete: "CASCADE" })
+    preventivo: Preventivo;
 
     @CreateDateColumn()
     creatoIl: Date;
