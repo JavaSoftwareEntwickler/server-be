@@ -22,7 +22,7 @@ AppDataSource.initialize()
                 });
             });
 
-            app.post('/preventivo/crea', async (req: Request, res: Response) => {
+            app.post('/preventivi', async (req: Request, res: Response) => {
                 const preventivo: Preventivo = req.body;
                 const risultato = await preventivoRepository.save(preventivo);
 
@@ -31,6 +31,31 @@ AppDataSource.initialize()
                     data: risultato
                 });
             });
+
+            app.put('/preventivi/:id', async (req: Request, res: Response) => {
+                const id = Number(req.params.id);
+                const preventivo: Preventivo = req.body;
+                const risultato = await preventivoRepository.save({
+                    ...preventivo,
+                    id: id
+                });
+
+                return res.json({
+                    status: 'OK',
+                    data: risultato
+                });
+            });
+
+            app.delete('/preventivi/:id', async (req: Request, res: Response) => {
+                const id = Number(req.params.id);
+                const risultato = await preventivoRepository.delete(id);
+
+                return res.json({
+                    status: 'OK',
+                    data: risultato
+                });
+            });
+
         });
     })
     .catch((error) => {

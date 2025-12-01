@@ -17,7 +17,7 @@ export class Preventivo implements IPreventivo {
     @Column()
     importoTotale: number;
 
-    @OneToMany(() => RighePreventivo, riga => riga.preventivo, { cascade: true })
+    @OneToMany(() => RighePreventivo, riga => riga.preventivo, { cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     righe: RighePreventivo[];
 
     @CreateDateColumn()
