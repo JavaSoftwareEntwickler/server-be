@@ -12,7 +12,16 @@ export class RighePreventivo implements IRighePreventivo {
     descrizione: string;
 
     @Column()
+    um: string;
+
+    @Column()
     quantita: number;
+
+    @Column()
+    importo: number;
+
+    @Column()
+    importoTotale: number;
 
     @ManyToOne(() => Preventivo, preventivo => preventivo.righe, { onDelete: "CASCADE" })
     preventivo: Preventivo;
