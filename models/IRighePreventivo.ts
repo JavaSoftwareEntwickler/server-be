@@ -1,7 +1,7 @@
 import { Preventivo } from "./preventivo";
 
 export interface IRighePreventivo {
-    id: number;
+    id: number | null;
     descrizione: string;
     um: string;
     quantita: number;
