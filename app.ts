@@ -13,8 +13,9 @@ AppDataSource.initialize()
     .then(() => {
         app.listen(8088, () => {
             console.log('App in ascolto nella porta 8088');
-
+            const righePreventivoRepository = AppDataSource.getRepository(RighePreventivo);
             const preventivoRepository = AppDataSource.getRepository(Preventivo);
+
 
             app.get('/preventivi', async (req: Request, res: Response) => {
                 const preventivi = await preventivoRepository.find({ relations: ["righe"] });
