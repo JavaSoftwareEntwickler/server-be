@@ -4,7 +4,7 @@ import { RighePreventivo } from "./righe-preventivo";
 export interface IPreventivo {
     id: number;
     nomeCliente: string;
-    dataPreventivo: string;
+    dataPreventivo: Date;
     importoTotale: number;
     righe: RighePreventivo[];
     creatoIl: Date;
