@@ -73,6 +73,57 @@ AppDataSource.initialize()
                 });
             });
 
+            //// Righe Preventivo ////
+
+            app.get('/righe-preventivo', async (req: Request, res: Response) => {
+                const righe = await righePreventivoRepository.find();
+                return res.json({
+                    status: 'OK',
+                    data: righe
+                });
+            });
+
+            app.post('/righe-preventivo', async (req: Request, res: Response) => {
+                const riga: RighePreventivo = req.body;
+                const risultato = await righePreventivoRepository.save(riga);
+                const risultatoRistrutturato = {
+                    id: risultato.id,
+                    descrizione: risultato.descrizione,
+                    um: risultato.um,
+                    quantita: risultato.quantita,
+                    importo: risultato.importo,
+                    importoTotale: risultato.importoTotale,
+                    creatoIl: risultato.creatoIl,
+                    modificatoIl: risultato.modificatoIl
+                };
+                return res.json({
+                    status: 'OK',
+                    data: risultatoRistrutturato
+                });
+            });
+
+            app.put('/righe-preventivo/:id', async (req: Request, res: Response) => {
+                const id = Number(req.params.id);
+                const risultato = await righePreventivoRepository.save({
+                    id: id,
+                    ...req.body
+                });
+                return res.json({
+                    status: 'OK',
+                    data: risultato
+                });
+            });
+
+            app.delete('/righe-preventivo/:id', async (req: Request, res: Response) => {
+                const id = Number(req.params.id);
+                const risultato = await righePreventivoRepository.delete(id);
+
+                return res.json({
+                    status: 'OK',
+                    data: risultato
+                });
+            });
+
         });
     })
     .catch((error) => {
