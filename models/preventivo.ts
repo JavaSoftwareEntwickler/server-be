@@ -11,8 +11,11 @@ export class Preventivo implements IPreventivo {
     @Column()
     nomeCliente: string;
 
-    @Column()
-    dataPreventivo: string;
+    @Column({
+        type: 'datetime',
+        default: () => 'CURRENT_TIMESTAMP'
+    })
+    dataPreventivo: Date;
 
     @Column()
     importoTotale: number;
