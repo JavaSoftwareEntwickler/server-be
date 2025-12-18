@@ -4,6 +4,7 @@ import { AppDataSource } from './db/data-source';
 import { Preventivo } from './models/preventivo';
 import { RighePreventivo } from './models/righe-preventivo';
 import { IRighePreventivo } from './models/IRighePreventivo';
+import { PdfService } from './pdf/pdf-service';
 
 const app = express();
 app.use(express.json());
@@ -12,10 +13,40 @@ app.use(cors());
 AppDataSource.initialize()
     .then(() => {
         app.listen(8088, () => {
+            const pdfService = new PdfService();
             console.log('App in ascolto nella porta 8088');
             const righePreventivoRepository = AppDataSource.getRepository(RighePreventivo);
             const preventivoRepository = AppDataSource.getRepository(Preventivo);
 
+            // Download PDF 
+            app.get('/preventivi/:id/pdf', async (req: Request, res: Response) => {
+                try {
+                    const id = Number(req.params.id);
+
+                    const preventivo = await preventivoRepository.findOne({
+                        where: { id },
+                        relations: ['righe']
+                    });
+
+                    if (!preventivo) {
+                        return res.status(404).send('Preventivo non trovato');
+                    }
+
+                    const pdf = await pdfService.generaPreventivo(preventivo);
+
+                    res.setHeader('Content-Type', 'application/pdf');
+                    res.setHeader(
+                        'Content-Disposition',
+                        //`inline; filename=preventivo-${id}.pdf`
+                        `attachment; filename=preventivo-${id}.pdf`
+                    );
+
+                    res.send(pdf);
+                } catch (err) {
+                    console.error('Errore PDF:', err);
+                    res.status(500).send('Errore generazione PDF');
+                }
+            });
 
             app.get('/preventivi', async (req: Request, res: Response) => {
                 const preventivi = await preventivoRepository.find({ relations: ["righe"] });

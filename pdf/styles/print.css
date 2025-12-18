@@ -1,0 +1,51 @@
+@page {
+    margin: 20mm 10mm;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 120px;
+    margin-right: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #333;
+    padding: 6px;
+}
+
+th {
+    background-color: #eee;
+}
+
+.totale {
+    margin-top: 20px;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Evita spezzare righe su due pagine */
+tr {
+    page-break-inside: avoid;
+}
+
+.note-finali {
+    margin-top: 30px;
+    font-size: 11px;
+    line-height: 1.4;
+}

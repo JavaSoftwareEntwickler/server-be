@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="print.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <img src="logo.png" class="logo" />
+      <div>
+        <h1>Preventivo</h1>
+        <p>
+          <strong>Cliente:</strong> {{ nomeCliente }}
+        </p>
+        <p>
+          <strong>Data:</strong> {{ dataPreventivo }}
+        </p>
+      </div>
+    </header>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Descrizione</th>
+          <th>UM</th>
+          <th>Q.tà</th>
+          <th>Importo</th>
+          <th>Totale</th>
+        </tr>
+      </thead>
+      <tbody>{{ righe }}</tbody>
+    </table>
+
+    <div class="totale">Totale preventivo: € {{ importoTotale }}</div>
+  </body>
+</html>

@@ -5,6 +5,9 @@
         "rootDir": "./",
         "moduleResolution": "node",
         "esModuleInterop": true,
+        "types": [
+            "node"
+        ],
         "strict": true,
         "strictPropertyInitialization": false,
         "experimentalDecorators": true,
