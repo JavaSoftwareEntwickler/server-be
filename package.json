@@ -1,27 +1,31 @@
 {
-  "name": "server-be",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "serve": "nodemon ./app.ts"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "type": "commonjs",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "nodemon": "^3.1.11",
-    "puppeteer": "^24.33.1",
-    "puppeteer-core": "^24.33.1",
-    "sqlite3": "^5.1.7",
-    "ts-node": "^10.9.2",
-    "typeorm": "^0.3.27"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.5"
-  }
+    "name": "server-be",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Backend preventivi - Electron",
+    "main": "./src/index.js",
+    "scripts": {
+        "serve": "nodemon ./src/server.ts",
+        "dev": "nodemon --exec ts-node src/server.ts",
+        "build": "tsc",
+        "start": "node dist/server.js"
+    },
+    "keywords": [],
+    "author": "Maxmilliam Marchesini: https://maxmarchesini.it",
+    "license": "MIT",
+    "type": "commonjs",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^5.1.0",
+        "nodemon": "^3.1.11",
+        "puppeteer": "^24.33.1",
+        "puppeteer-core": "^24.33.1",
+        "sqlite3": "^5.1.7",
+        "ts-node": "^10.9.2",
+        "typeorm": "^0.3.27"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.5"
+    }
 }

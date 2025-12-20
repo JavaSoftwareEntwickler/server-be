@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { IPreventivo } from "./IPreventivo";
-import { RighePreventivo } from "./righe-preventivo";
+import { RighePreventivo } from "./riga-preventivo.entity";
 
 
 @Entity()

@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
-import { Preventivo } from "../models/preventivo";
-import { RighePreventivo } from "../models/righe-preventivo";
+import { Preventivo } from "../modules/preventivi/models/preventivo.entity";
+import { RighePreventivo } from "../modules//preventivi/models/riga-preventivo.entity";
 
 export const AppDataSource = new DataSource({
     type: 'sqlite',

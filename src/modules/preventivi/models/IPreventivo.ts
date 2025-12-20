@@ -1,5 +1,5 @@
-import { IRighePreventivo } from "./IRighePreventivo";
-import { RighePreventivo } from "./righe-preventivo";
+import { IRigaPreventivo } from "./IRighePreventivo";
+import { RighePreventivo } from "./riga-preventivo.entity";
 
 export interface IPreventivo {
     id: number;

@@ -1,6 +1,6 @@
-import { Preventivo } from "./preventivo";
+import { Preventivo } from "./preventivo.entity";
 
-export interface IRighePreventivo {
+export interface IRigaPreventivo {
     id: number | null;
     descrizione: string;
     um: string;

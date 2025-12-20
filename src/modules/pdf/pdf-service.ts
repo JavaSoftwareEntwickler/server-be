@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
-import { Preventivo } from '../models/preventivo';
+import { Preventivo } from '../preventivi/models/preventivo.entity';
 
 export class PdfService {
 

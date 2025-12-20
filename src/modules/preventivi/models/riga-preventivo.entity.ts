@@ -1,10 +1,10 @@
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { IRighePreventivo } from "./IRighePreventivo";
-import { Preventivo } from "./preventivo";
+import { IRigaPreventivo } from "./IRighePreventivo";
+import { Preventivo } from "./preventivo.entity";
 
 
 @Entity()
-export class RighePreventivo implements IRighePreventivo {
+export class RighePreventivo implements IRigaPreventivo {
     @PrimaryGeneratedColumn()
     id: number;
 
