@@ -53,6 +53,7 @@ export class PdfService {
 
         html = html
             .replace('{{ nomeCliente }}', preventivo.nomeCliente)
+            .replace('{{ indirizzo }}', preventivo.indirizzo)
 
             .replace('{{ dataPreventivo }}', new Date(preventivo.dataPreventivo).toLocaleDateString('it-IT'))
             .replace('{{ importoTotale }}', preventivo.importoTotale.toString())
