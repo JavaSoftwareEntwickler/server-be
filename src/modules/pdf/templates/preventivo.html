@@ -4,25 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="print.css" />
   </head>
-
   <body>
-    <header class="header">
-      <img src="logo.png" class="logo" />
-      <div>
-        <h1>Preventivo</h1>
-        <p>
-          <strong>Cliente:</strong> {{ nomeCliente }}
-        </p>
-        <p>
-          <strong>Indirizzo:</strong> {{ indirizzo }}
-        </p>
-        <p>
-          <strong>Data:</strong> {{ dataPreventivo }}
-        </p>
-      </div>
-    </header>
-
-    <table>
+    <table class="righe-tabella">
       <thead>
         <tr>
           <th>Descrizione</th>
@@ -36,5 +19,29 @@
     </table>
 
     <div class="totale">Totale preventivo: € {{ importoTotale }}</div>
+
+    <div class="note-finali">
+      <b>1. Prezzi:</b> Tutti i prezzi si intendono <u>IVA esclusa.</u><br />
+      <b>2. Acconto:</b> <u>Acconto richiesto: {{ acconto }}</u>, pari a circa il {{ percentualeReale }}% dell'importo totale, <u>da versare al momento dell'accettazione.</u><br />
+      <b>3. Smaltimento materiali:</b> I costi relativi a macerie o materiali di risulta sono stimati e potranno essere aggiornati in base al reale volume prodotto.<br />
+      <b>4. Variazioni:</b> Eventuali variazioni in corso d'opera saranno oggetto di aggiornamento del presente preventivo.<br />
+      <b>5. Lavori in economia:</b> Prezzo in economia: €125/giorno per ogni operaio impiegato (esclusi materiali).<br />
+      <b>6. Trasporti:</b> I costi di trasporto sono esclusi e verranno conteggiati separatamente al costo di 0,50 €/km.<br />
+      <b>7. Lavori non prevedibili:</b> Il preventivo non include lavorazioni non rilevabili durante il sopralluogo.<br />
+      <b>8. Richieste extra:</b> Eventuali richieste aggiuntive saranno valutate e quotate separatamente.<br />
+      <b>9. Ritardi non imputabili:</b> L’impresa non è responsabile per ritardi dovuti a cause esterne, condizioni meteo avverse o forza maggiore.<br />
+      <b>10. Tempi di consegna:</b> La tempistica sarà definita in base alla disponibilità del cantiere.<br />
+      <b>11. Aggiornamento prezzi:</b> In caso di variazioni significative dei costi, l’impresa si riserva il diritto di aggiornare i prezzi.<br />
+      <b>12. Validità del preventivo:</b> Il presente preventivo ha validità di 30 giorni dalla data di emissione.<br />
+      <b>13. Normative:</b> I lavori saranno eseguiti nel rispetto delle normative vigenti in materia di sicurezza e qualità.<br />
+      <!-- Firma per accettazione -->
+      <div style="margin-top:30px; font-size: 14px;">
+        Totale preventivo senza iva: € {{ importoTotale }}
+        <br />
+        Firma per accettazione
+        <br /><br /><br />
+        ------------------------------
+      </div>
+    </div>
   </body>
 </html>

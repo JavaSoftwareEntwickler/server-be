@@ -1,26 +1,14 @@
-@page {
-    margin: 20mm 10mm;
-}
-
 body {
     font-family: Arial, sans-serif;
     font-size: 14px;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.logo {
-    width: 300px;
-    margin-right: 20px;
+    margin: 0;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    page-break-inside: auto;
+    /* consente alle righe di andare su più pagine */
 }
 
 th,
@@ -33,19 +21,25 @@ th {
     background-color: #eee;
 }
 
+tr {
+    page-break-inside: avoid;
+    /* evita di spezzare le righe */
+}
+
 .totale {
     margin-top: 20px;
     text-align: right;
     font-weight: bold;
-}
-
-/* Evita spezzare righe su due pagine */
-tr {
     page-break-inside: avoid;
+    /* evita che il totale venga tagliato */
 }
 
 .note-finali {
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 11px;
     line-height: 1.4;
+    page-break-inside: avoid;
+    /* evita che le note vengano tagliate */
+
+    /* se non c'è spazio sufficiente, sposta in pagina nuova */
 }
