@@ -16,17 +16,57 @@ export class PdfService {
 
         // Header HTML per tutte le pagine
         const headerHtml = `
-            <div style="width:100%; display:flex; align-items:center; font-family: Arial, sans-serif; font-size:14px; padding: 0 10px;">
-            <img src="data:image/png;base64,${this.getLogoBase64()}" style="width:300px; margin-right:20px;" />
-            <div style="line-height:1.2;">
-                <p style="margin-right:20px; text-align:right;"><strong>Data:</strong> ${new Date(preventivo.dataPreventivo).toLocaleDateString('it-IT')} </p>
-                <br/>
-                <h1 style="margin:0; font-size:24px;">Preventivo</h1>
-                <p style="margin:0;"><strong>Cliente:</strong> ${preventivo.nomeCliente}</p>
-                <p style="margin:0;"><strong>Indirizzo:</strong> ${preventivo.indirizzo}</p>
-            </div>
+            <div style="
+                width:100%;
+                display:flex;
+                align-items:flex-start;
+                justify-content:space-between;
+                font-family: Arial, sans-serif;
+                font-size:14px;
+                padding: 0 10px;
+            ">
+                
+                <!-- LOGO A SINISTRA -->
+                <img src="data:image/png;base64,${this.getLogoBase64()}" style="width:300px;" />
+
+                <!-- BOX A DESTRA -->
+                <div style="
+                    margin-left: 30px;
+                    margin-top: 30px;
+                    width:45%;
+                    text-align:left;
+                    line-height:1.4;
+                ">
+
+                    <div style="display:flex; margin-top:4px;margin-right:30px;">
+                        <span style="min-width:90px;"><strong>Preventivo:</strong></span>
+                        <span style="flex:1; border-bottom:1px dotted #000;">${preventivo.id}</span>
+                    </div>
+                    <div style="display:flex;margin-top:4px;margin-right:30px;">
+                        <span style="min-width:90px;"><strong>Data:</strong></span>
+                        <span style="flex:1; border-bottom:1px dotted #000;">
+                            ${new Date(preventivo.dataPreventivo).toLocaleDateString('it-IT')}
+                        </span>
+                    </div>
+                    <br/>
+
+                    <div style="display:flex; margin-top:4px;margin-right:30px;">
+                        <span style="min-width:90px;"><strong>Cliente:</strong></span>
+                        <span style="flex:1; border-bottom:1px dotted #000;">
+                            ${preventivo.nomeCliente}
+                        </span>
+                    </div>
+
+                    <div style="display:flex; margin-top:4px;margin-right:30px;">
+                        <span style="min-width:90px;"><strong>Indirizzo:</strong></span>
+                        <span style="flex:1; border-bottom:1px dotted #000;">
+                            ${preventivo.indirizzo}
+                        </span>
+                    </div>
+                </div>
             </div>
             `;
+
 
         const pdfUint8 = await page.pdf({
             format: 'A4',

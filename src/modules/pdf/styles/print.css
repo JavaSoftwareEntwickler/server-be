@@ -23,6 +23,7 @@ th {
 
 tr {
     page-break-inside: avoid;
+    text-align: left;
     /* evita di spezzare le righe */
 }
 
